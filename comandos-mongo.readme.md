@@ -37,3 +37,16 @@ __db.nome_collection.update({id: '123'}, {$set: {nome: 'novo nome'}})__ => alter
 __db.nome_collection.remove({})__ => remove todos os dados da collection
 
 __db.nome_collection.remove({id: '123'})__ => remove somente o dado com id 123
+
+
+### Conexão com o mongoose
+
+__Mongoose.connect('mongodb://nome_usuario:senha_usuario@localhost:27017/nome_database', { useNewUrlParser: true }, (error) => if(!error) return; console.log('falha na conexão') )__ => cria conexão com o mongo
+
+__Mongoose.connection.once('open', () => console.log('database rodando'))__ => verifica se a conexão foi estabelecida
+
+__Mongoose.connection.readyState__ => retorna o estado da conexão
+    - 0 disconectado
+    - 1 conectado
+    - 2 conectando
+    - 3 disconectando
