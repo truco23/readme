@@ -69,6 +69,7 @@ __docker container exec -it id_container nome_imagem -u nome_usuario -p senha_us
 
 
 ### Autenticação no MongoClient
+
 __localhost:3333__ => com usuário admin
 - host/port => __mongodb__
 - database name => __admin__
@@ -84,3 +85,28 @@ __localhost:3333__ => com usuário user_teste
 - username => __user_teste__
 - password => __senha_teste__
 - authentication db => __database_teste__
+
+
+### docker-compose.yml
+
+version: "3.1"
+services:
+  mongoservice: 
+    image: mongo
+    container_name: mongodb
+    command: --serviceExecutor adaptive
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: teste
+      MONGO_INITDB_ROOT_PASSWORD: teste
+      MONGO_INITDB_DATABASE: database_teste
+    ports:
+      - "27017:27017"
+  mongoclientservice:
+    image: mongoclient/mongoclient
+    container_name: mongoclient
+    ports:
+      - "3001:3000"
+    links:
+      - mongoservice
+    depends_on:
+      - mongoservice
