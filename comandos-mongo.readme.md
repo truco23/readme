@@ -50,3 +50,7 @@ __Mongoose.connection.readyState__ => retorna o estado da conexão
     - 1 conectado
     - 2 conectando
     - 3 disconectando
+
+### Criar usuário
+
+__db.createUser({user: "hello", pwd: "hello" ,roles: [{ role: "readWrite", db: "database_hello" }]})__ => cria usuário __hello__ com a senha __hello__ com permissão de leitura e escrita na database __database_hello__
