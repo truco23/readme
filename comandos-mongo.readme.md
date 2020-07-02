@@ -1,5 +1,19 @@
 # CLI mongo
 
+### Autenticação
+
+__mongo -u root -p root --authenticationDatabase admin__ => autenticação com usuário __root__ senha __root__
+
+### Criar usuário
+
+__db.createUser({user: "teste", pwd: "teste", roles:[{role: "readWrite",db: "database_teste"}]}__ => cria usuário __teste__ senha __teste__ permmissão escrita e leitura na __database_teste__
+);
+
+
+### Remover usuário
+
+__db.dropUser("user")__ => remove usuário chamado __user__
+
 
 ### Listagem
 
